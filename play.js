@@ -2,19 +2,19 @@ const { QueryType } = require('discord-player');
 
 module.exports = {
     name: 'play',
-    aliases: ['p'],
+    aliases: ['&'],
     utilisation: '{prefix}play [song name/URL]',
     voiceChannel: true,
 
     async execute(client, message, args) {
-if (!args[0]) return message.channel.send({ content: `${message.author}, Write the name of the music you want to search. ❌` });
+if (!args[0]) return message.channel.send({ content: `${message.author}, Write the name of the music you want to search. X` });
 
         const res = await client.player.search(args.join(' '), {
             requestedBy: message.member,
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return message.channel.send({ content: `${message.author}, No results found! ❌` });
+        if (!res || !res.tracks.length) return message.channel.send({ content: `${message.author}, No results found! X` });
 
         const queue = await client.player.createQueue(message.guild, {
             metadata: message.channel
@@ -24,10 +24,10 @@ if (!args[0]) return message.channel.send({ content: `${message.author}, Write t
             if (!queue.connection) await queue.connect(message.member.voice.channel)
         } catch {
             await client.player.deleteQueue(message.guild.id);
-            return message.channel.send({ content: `${message.author}, I can't join audio channel. ❌` });
+            return message.channel.send({ content: `${message.author}, I can't join audio channel. X` });
         }
 
-        await message.channel.send({ content: `Your ${res.playlist ? 'Playlist' : 'Track'} Loading... 🎧` });
+        await message.channel.send({ content: `Your ${res.playlist ? 'Playlist' : 'Track'} Loading..` });
 
 if(client.config.opt.selfDeaf === false) {
 let channel = message.member.voice.channel;
