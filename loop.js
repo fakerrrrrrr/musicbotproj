@@ -2,7 +2,7 @@ const { QueueRepeatMode } = require('discord-player');
 
 module.exports = {
     name: 'loop',
-    aliases: ['lp'],
+    aliases: ['/'],
     utilisation: '{prefix}loop <queue>',
     voiceChannel: true,
 
