@@ -1,6 +1,6 @@
 module.exports = {
     name: 'skip',
-    aliases: [],
+    aliases: [/],
     utilisation: '{prefix}skip',
     voiceChannel: true,
 
